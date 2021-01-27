@@ -1,0 +1,26 @@
+{% load humanize %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Notes</h1>
+    
+    {% for note in object_list %}
+        <li>
+            <div>
+                <h3><a href="{% url 'note:update_note' note.id %}">{{ note.title }}</a> - {{ note.created_at|naturaltime }}</h3>
+                <div>
+                    {{ note.content }}
+                </div>
+            </div>
+            <p><a href="{% url 'note:delete_note' note.id %}">Delete Note</a></p>
+        </li>
+        <br>
+    {% endfor %}  
+</body>
+</html>
