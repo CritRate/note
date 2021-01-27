@@ -15,8 +15,7 @@
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [ "ms-azuretools.vscode-docker","ms-python.vscode-pylance", "ms-python.python","visualstudioexptteam.vscodeintellicode", 
-	"batisteo.vscode-django" ],
+	"extensions": [ "ms-azuretools.vscode-docker","ms-python.vscode-pylance", "ms-python.python","visualstudioexptteam.vscodeintellicode",],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [8000],
