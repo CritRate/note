@@ -2,6 +2,11 @@
 
 
 {% block content %}
-    <h3><a href="{% url 'accounts:sign_up' %}">Sign Up</a></h3>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Log In">
+    <input type="hidden" name="next" value="{{ next }}" />
+</form>
 {% endblock content %}
     

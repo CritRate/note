@@ -8,7 +8,7 @@
     {% if not note_list %}
         <p>Empty</p>
     {% else %}
-        {% for note in object_list %}
+        {% for note in note_list %}
             <li>
                 <p>{{ note.created_at|naturaltime }}</p>
                 <h3><a href="{% url 'note:update_note' note.id %}">{{ note.title }}</a></h3>
@@ -17,4 +17,4 @@
             <br>
         {% endfor %}
     {% endif %}
-{% endblock content %}
+{% endblock content %} 

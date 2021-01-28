@@ -11,22 +11,39 @@ class HomeView(View):
     template_name = 'note/home.html'
     
     def get(self, request):
-        return render(request, self.template_name)
+        context = {
+            'note_list': None
+        }
+        if self.request.user.is_authenticated:
+            context['note_list'] = Note.objects.filter(user=self.request.user).all()
+            print(context)
+        return render(request, self.template_name, context=context)
 
 class NoteCreateView(LoginRequiredMixin, CreateView):
     model = Note
     fields = ['title', 'content']
-    success_url = reverse_lazy('note:list_view')
+    success_url = reverse_lazy('note:home')
+
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.user = self.request.user
+        return super().form_valid(form)
 
 
 class NoteUpdateView(LoginRequiredMixin, UpdateView):
     model = Note
     fields = ['title', 'content']
-    success_url = reverse_lazy('note:list_view')
+    success_url = reverse_lazy('note:home')
+
+    def get_queryset(self):
+        data = super().get_queryset()
+        return data.filter(user=self.request.user)
+        
 
 class NoteDeleteView(LoginRequiredMixin, DeleteView):
     model = Note
-    success_url = reverse_lazy('note:list_view')
+    success_url = reverse_lazy('note:home')
 
 
 class NoteDetailView(LoginRequiredMixin, DetailView):

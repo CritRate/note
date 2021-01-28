@@ -14,11 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from django.urls.conf import include
+from django.urls import path, include
+from django.urls.base import reverse_lazy
+from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('notes/', include('note.urls'), name='note'),
     path('accounts/', include('accounts.urls'), name='login'),
+    path('', RedirectView.as_view(url=reverse_lazy('note:home'))),
 ]

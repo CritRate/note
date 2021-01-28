@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
 from django.contrib.auth import login, authenticate
-
 from .forms import SignUpForm
 
 # Create your views here.

@@ -10,6 +10,19 @@
     </title>
 </head>
 <body>
+    
+    {% if user.is_authenticated %}
+        <div>
+            <h3>{{ user.username }}</h3>
+            <a href="{% url 'accounts:logout' %}">Log Out</a>
+        </div>
+    {% else %}
+        <div>
+            <h3><a href="{% url 'accounts:login' %}">Log In</a></h3>
+            <p>Dont have an account? <a href="{% url 'accounts:sign_up' %}">Sign Up Here</a></p>
+        </div>
+    {% endif %}
+        
     {% block content %}
         <h1>Change the content of this block</h1>
     {% endblock content %}
