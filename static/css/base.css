@@ -1,0 +1,19 @@
+h3 {
+    color: red;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 25% auto;
+    grid-template-rows: auto;
+}
+
+.list {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.content {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}

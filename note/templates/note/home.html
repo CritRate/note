@@ -2,7 +2,7 @@
 
 {% load humanize %}
 
-{% block content %}
+{% block note_list %}
     <h1>Notes</h1>
     <h4><a href="{% url 'note:create_note' %}">Create Note</a></h4>
     {% if not my_notes %}
@@ -17,4 +17,8 @@
             <br>
         {% endfor %}
     {% endif %}
-{% endblock content %} 
+{% endblock note_list %} 
+
+{% block content %}
+    <h3>Welcome to Note app. Create account or note to start.</h3>
+{% endblock content %}
