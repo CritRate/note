@@ -10,13 +10,7 @@ class HomeView(View):
     template_name = 'note/home.html'
     
     def get(self, request):
-        context = {
-            'note_list': None
-        }
-        if self.request.user.is_authenticated:
-            context['note_list'] = Note.objects.filter(user=self.request.user).all()
-            print(context)
-        return render(request, self.template_name, context=context)
+        return render(request, self.template_name)
 
 class NoteCreateView(LoginRequiredMixin, CreateView):
     model = Note
