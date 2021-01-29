@@ -1,4 +1,3 @@
-from typing import List
 from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView, ListView, DeleteView, DetailView, View
 from django.urls import reverse_lazy
@@ -37,8 +36,8 @@ class NoteUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('note:home')
 
     def get_queryset(self):
-        data = super().get_queryset()
-        return data.filter(user=self.request.user)
+        query = super().get_queryset()
+        return query.filter(user=self.request.user)
         
 
 class NoteDeleteView(LoginRequiredMixin, DeleteView):

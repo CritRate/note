@@ -127,3 +127,7 @@ STATIC_URL = '/static/'
 
 LOGOUT_REDIRECT_URL = 'note:home'
 LOGIN_REDIRECT_URL = 'note:home'
+
+
+# CONTEXT PROCESSOR to get user notes available to all templates
+TEMPLATES[0]['OPTIONS']['context_processors'].append('note.context_processors.my_notes')

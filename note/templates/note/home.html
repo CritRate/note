@@ -5,10 +5,10 @@
 {% block content %}
     <h1>Notes</h1>
     <h4><a href="{% url 'note:create_note' %}">Create Note</a></h4>
-    {% if not note_list %}
+    {% if not my_notes %}
         <p>Empty</p>
     {% else %}
-        {% for note in note_list %}
+        {% for note in my_notes %}
             <li>
                 <p>{{ note.created_at|naturaltime }}</p>
                 <h3><a href="{% url 'note:update_note' note.id %}">{{ note.title }}</a></h3>
