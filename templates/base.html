@@ -5,7 +5,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'note/css/grid.css' %}">
+    
+    {% block css %}
+    {% endblock css %}
+        
     <title>
     {% block title %}
         NOTE
@@ -16,7 +26,7 @@
     <nav>
         {% block nav %}
             {% if user.is_authenticated %}
-                <div>
+                <div class="avatar">
                     <h3>{{ user.username }}</h3>
                     <a href="{% url 'accounts:logout' %}">Log Out</a>
                 </div>
@@ -28,17 +38,8 @@
             {% endif %}
         {% endblock nav %}
     </nav>
-    <div class="container">
-        <div class="list">
-            {% block note_list %}
-            {% endblock note_list %}
-        </div>
-        
-        <div class="content">
-            {% block content %}
-                <h1>Change the content of this block</h1>
-            {% endblock content %}
-        </div>
-    </div>
+    {% block content %}
+        <p>Change the content!</p>
+    {% endblock content %}  
 </body>
 </html>

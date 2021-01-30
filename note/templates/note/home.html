@@ -1,24 +1,39 @@
 {% extends 'base.html' %}
 
 {% load humanize %}
+{% load static %}
 
-{% block note_list %}
-    <h1>Notes</h1>
-    <h4><a href="{% url 'note:create_note' %}">Create Note</a></h4>
-    {% if not my_notes %}
-        <p>Empty</p>
-    {% else %}
-        {% for note in my_notes %}
-            <li>
-                <p>{{ note.created_at|naturaltime }}</p>
-                <h3><a href="{% url 'note:update_note' note.id %}">{{ note.title }}</a></h3>
-                <p><a href="{% url 'note:delete_note' note.id %}">Delete</a></p>
-            </li>
-            <br>
-        {% endfor %}
-    {% endif %}
-{% endblock note_list %} 
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'note/css/note.css' %}">
+{% endblock css %}
+    
 
 {% block content %}
-    <h3>Welcome to Note app. Create account or note to start.</h3>
+    <div class="container">
+        <div class="list">
+            {% block note_list %}
+                <h1>Notes</h1>
+                <h4><a href="{% url 'note:create_note' %}">Create Note</a></h4>
+                {% if not my_notes %}
+                    <p>Empty</p>
+                {% else %}
+                    {% for note in my_notes %}
+                        <li class="card">
+                            <p>{{ note.created_at|naturaltime }}</p>
+                            <h3 class="card-title"><a href="{% url 'note:update_note' note.id %}">{{ note.title }}</a></h3>
+                            <p><a href="{% url 'note:delete_note' note.id %}">Delete</a></p>
+                        </li>
+                        <br>
+                    {% endfor %}
+                {% endif %}
+            {% endblock note_list %}
+        </div>
+        
+        <div class="note">
+            {% block note %}
+                <h1><h3>Welcome to Note app. Create account or note to start.</h3></h1>
+            {% endblock note %}
+        </div>
+    </div>
 {% endblock content %}

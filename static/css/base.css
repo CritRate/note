@@ -1,19 +1,10 @@
-h3 {
-    color: red;
+html, body {
+    height: 100vh;
 }
 
-.container {
-    display: grid;
-    grid-template-columns: 25% auto;
-    grid-template-rows: auto;
+nav {
+    height: 5vh;
+    display: flex;
+    justify-content: flex-end;
 }
 
-.list {
-    grid-column-start: 1;
-    grid-column-end: 2;
-}
-
-.content {
-    grid-column-start: 2;
-    grid-column-end: 3;
-}

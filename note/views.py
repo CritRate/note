@@ -16,12 +16,17 @@ class NoteCreateView(LoginRequiredMixin, CreateView):
     model = Note
     fields = ['title', 'content']
     success_url = reverse_lazy('note:home')
+    initial = {
+        'title': 'Title...',
+        'content': 'Content of the note...'
+    }
 
 
     def form_valid(self, form):
         obj = form.save(commit=False)
         obj.user = self.request.user
         return super().form_valid(form)
+
 
 
 class NoteUpdateView(LoginRequiredMixin, UpdateView):

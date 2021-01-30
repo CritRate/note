@@ -1,0 +1,39 @@
+:root {
+    --main-color : rgb(90, 200, 250);
+}
+
+.note-form {
+    height: 100%;
+}
+.note-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: stretch;
+    height: 100%;
+}
+
+.note-container input {
+    height: 5%;
+    border: none;
+    text-align: center;
+    font-size: 2em;
+}
+
+.note-container textarea {
+    height: 90%;
+    border: none;
+    font-size: 1.5em;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+    row-gap: 1em;
+}
+
+.card {
+    text-align:center;
+}
